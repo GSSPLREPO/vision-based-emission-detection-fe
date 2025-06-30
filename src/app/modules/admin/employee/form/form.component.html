@@ -1,0 +1,378 @@
+
+
+<!-- <h2 class="ms-3">User</h2> -->
+
+<div class="card p-3 ms-3 me-3">
+    <form appFocusInvalidInput [formGroup]="employeeForm"
+        (ngSubmit)="onSubmit()">
+        <div class="row row-cols-1">
+
+            <!-- Name Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="fullName" class="form-label">Name<span
+                            class="text-danger">*</span></label>
+                    <input type="text" formControlName="name"
+                        class="form-control custom-focus-color" id="fullName"
+                        placeholder="Enter Name" appAutofocus />
+                    <div *ngIf="submitted && f.name.errors?.required"
+                        class="text-danger mt-1">
+                        Name is required
+                    </div>
+                    <div *ngIf="f.name.errors?.pattern"
+                        class="text-danger mt-1">
+                        Name can only contain letters and single spaces between
+                        words
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employee Code Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="employeeCode" class="form-label">Employee Code<span
+                            class="text-danger">*</span></label>
+                    <input type="text" formControlName="employeeCode"
+                        class="form-control custom-focus-color" id="employeeCode"
+                        placeholder="Enter Employee Code" maxlength="10" />
+                    <div *ngIf="submitted && f.employeeCode.errors?.required"
+                        class="text-danger mt-1">
+                        Employee Code is required
+                    </div>
+                    <div *ngIf="f.employeeCode.errors?.pattern"
+                        class="text-danger mt-1">
+                        Invalid Employee Code
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organization Dropdown Field -->
+            <!-- <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="organization"
+                        class="form-label">Organization<span
+                            class="text-danger">*</span></label>
+                    <ng-select [items]="organization" bindLabel="name"
+                        bindValue="id" placeholder="--Select--"
+                        formControlName="organisationId">
+                    </ng-select>
+                    <div *ngIf="submitted && f.organisationId.errors?.required"
+                        class="text-danger mt-1">
+                        Organization is required
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Department Dropdown Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="department" class="form-label">Department<span
+                            class="text-danger">*</span></label>
+                    <ng-select [items]="department" bindLabel="name"
+                        bindValue="id" placeholder="--Select--"
+                        formControlName="departmentId">
+                    </ng-select>
+                    <div *ngIf="submitted && f.departmentId.errors?.required"
+                        class="text-danger mt-1">
+                        Department is required
+                    </div>
+                </div>
+            </div>
+
+            <!-- Role Dropdown Field -->
+            <!-- <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="roles" class="form-label">Role<span
+                            class="text-danger">*</span></label>
+                    <ng-select [items]="roles" bindLabel="name" bindValue="id"
+                        placeholder="--Select--"
+                        formControlName="roleId">
+                    </ng-select>
+                    <div *ngIf="submitted && f.roleId.errors?.required"
+                        class="text-danger mt-1">
+                        Role is required
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Contact Number Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="mobileNo" class="form-label">Contact
+                        Number<span class="text-danger">*</span></label>
+                    <input type="text" formControlName="mobileNo"
+                        class="form-control custom-focus-color" id="mobileNo"
+                        placeholder="Enter Contact Number" maxlength="10" />
+                    <div *ngIf="submitted && f.mobileNo.errors?.required"
+                        class="text-danger mt-1">
+                        Contact Number is required
+                    </div>
+                    <div *ngIf="f.mobileNo.errors?.pattern"
+                        class="text-danger mt-1">
+                        Provide proper Contact Number
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date of Birth Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="birthDate" class="form-label">Date of Birth<span
+                            class="text-danger">*</span></label>
+                    <input type="date" formControlName="birthDate"
+                        class="form-control custom-focus-color" id="birthDate"
+                        placeholder="Enter Date of Birth" [max]="maxBirthDate"
+                        (ngModelChange)="checkDOB($event)" />
+                    <div *ngIf="submitted && f.birthDate.errors?.required"
+                        class="text-danger mt-1">
+                        Date of Birth is required
+                    </div>
+                    <div *ngIf="this.dobCheck" class="text-danger mt-1">
+                        Invalid Date of Birth
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date of Joining Date Field -->
+            <!-- <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="joinDate" class="form-label">Date of Joining<span
+                            class="text-danger">*</span></label>
+                    <input type="date" formControlName="joinDate"
+                        class="form-control custom-focus-color" id="joinDate"
+                        placeholder="Enter Date of Joning" />
+                    <div *ngIf="submitted && f.joinDate.errors?.required"
+                        class="text-danger mt-1">
+                        Date of Joining is required
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Email Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" formControlName="email"
+                        class="form-control custom-focus-color" id="email"
+                        placeholder="Enter Email" />
+                    <!-- <div *ngIf="submitted && f.email.errors?.required" class="text-danger mt-1">
+                            Email is required
+                          </div>-->
+                    <div *ngIf="f.email.errors?.pattern"
+                        class="text-danger mt-1">
+                        Please provide valid email
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea id="address" placeholder="Enter Address"
+                        class="form-control custom-focus-color"
+                        formControlName="address" maxlength="140"
+                        (paste)="onPaste($event)"></textarea>
+                </div>
+                <!-- Validation message for exceeding 140 characters -->
+                <!-- <div *ngIf="addressTooLong" class="text-danger mt-1">
+                        Address cannot exceed 140 characters.
+                    </div> -->
+            </div>
+
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3" style="margin-top: 41px;">
+                    <input id="IsResigned" type="checkbox"
+                        formControlName="IsResigned" class="form-check-input"
+                        (change)="toggleResignedFields()">
+                    <label for="IsResigned" class="form-label ms-2">Is
+                        Resigned?</label>
+                </div>
+            </div>
+
+            @if(isResignedChecked){
+            <!-- Date of Resignation Date Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="resignationDate" class="form-label">Date of
+                        Resignation<span
+                            class="text-danger">*</span></label>
+                    <input type="date" formControlName="resignationDate"
+                        class="form-control custom-focus-color"
+                        id="resignationDate"
+                        placeholder="Enter Date of Resignation"
+                        (ngModelChange)="checkDOR($event)" />
+                    <div *ngIf="submitted && f.resignationDate.errors?.required"
+                        class="text-danger mt-1">
+                        Date of Resignation is required
+                    </div>
+                    <div *ngIf="this.dorCheck" class="text-danger mt-1">
+                        Invalid Date of Resignation
+                    </div>
+                </div>
+            </div>
+
+            <!-- Last working day Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="lastWorkingDate" class="form-label">Last Working
+                        Date<span
+                            class="text-danger">*</span></label>
+                    <input type="date" formControlName="lastWorkingDate"
+                        class="form-control custom-focus-color"
+                        id="lastWorkingDate"
+                        placeholder="Enter Last working date"
+                        (ngModelChange)="checkLWD($event)" />
+                    <div *ngIf="submitted && f.lastWorkingDate.errors?.required"
+                        class="text-danger mt-1">
+                        Last working date is required
+                    </div>
+                    <div *ngIf="this.lwdCheck" class="text-danger mt-1">
+                        Invalid Last Working Date
+                    </div>
+                </div>
+            </div>
+            }
+
+            <!-- IsUser Checkbox -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3" style="margin-top: 41px;">
+                    <input id="isUser" type="checkbox" formControlName="isUser"
+                        class="form-check-input"
+                        (ngModelChange)="toggleUserFields()" />
+                    <label for="isUser" class="form-label ms-2">Is User?</label>
+                </div>
+            </div>
+
+            <!-- Username Field (Only Visible if IsUser is checked) -->
+            @if (isUserChecked) {
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="userName" class="form-label">Username<span
+                            class="text-danger">*</span></label>
+                    <input type="text" formControlName="userName"
+                        class="form-control custom-focus-color" id="userName"
+                        placeholder="Enter Name" />
+                    <div *ngIf="submitted && f.userName.errors?.required"
+                        class="text-danger mt-1">
+                        Username is required
+                    </div>
+                    <div *ngIf="f.userName.errors?.pattern"
+                        class="text-danger mt-1">
+                        Username can only contain letters and _ or . between words
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password Field (Only Visible if IsUser is checked) -->
+            <!-- <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password<span
+                            class="text-danger">*</span></label>
+                    <input type="password" formControlName="password"
+                        class="form-control custom-focus-color" id="password"
+                        placeholder="Enter Password" />
+                    <div *ngIf="submitted && f.password.errors?.required"
+                        class="text-danger mt-1">
+                        Password is required
+                    </div>
+                    <div *ngIf="f.password.errors?.pattern"
+                        class="text-danger mt-1">
+                        Password can only contain letters and single spaces
+                        between words
+                    </div>
+                </div>
+            </div> -->
+
+            @if(Id){
+        
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-check" style="margin-top: 25px;margin-bottom: 15px;">
+          <input class="form-check-input custom-check custom-focus-color" type="checkbox" id="change_password"
+            formControlName="change_password" (ngModelChange)="getChangeVal($event)">
+          <label class="form-check-label" for="change_password">
+            Change Password
+          </label>
+        </div>
+      </div>
+      }
+      <!-- Password Field-->
+      @if(!Id || f.change_password.value){
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group">
+          <label for="Password" class="form-label"
+            >Password<span class="text-danger">*</span></label
+          >
+          <div class="input-group">
+            <input
+              [type]="passwordType"
+              class="form-control custom-focus-color"
+              id="Password"
+              placeholder="Password"
+              autocomplete="off"
+              formControlName="password"
+              title="Enter valid password"
+              maxlength="50"
+              (ngModelChange)="passwordMatch()"
+            />
+            <span class="input-group-text" (click)="togglePassword()">
+              <i
+                class="pointer fa fa-eye{{
+                  passwordType === 'text' ? '-slash' : ''
+                }}"
+              ></i>
+            </span>
+          </div>
+          @if(submitted && f.password.errors?.required){
+          <div class="text-danger">Password is required</div>
+          } @if(f.password.errors?.pattern){
+          <div class="text-danger">
+            Password must be alest 8 character,one small letter,one capital
+            letter, one number and special character
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Confirm Password Field-->
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group">
+          <label for="ConfirmPassword" class="form-label"
+            >Confirm Password<span class="text-danger">*</span></label
+          >
+          <input
+            type="password"
+            class="form-control custom-focus-color"
+            id="ConfirmPassword"
+            placeholder="Confirm Password"
+            autocomplete="off"
+            formControlName="confirm_password"
+            title="Enter valid password"
+            (ngModelChange)="passwordMatch()"
+          />
+          @if(submitted && f.confirm_password.errors?.required){
+          <div class="text-danger">Confirm Password is required</div>
+          } @if(showPasswordMatch && !f.confirm_password.errors?.required){
+          <div class="text-danger">Password do not match</div>
+          } @if(f.confirm_password?.value && !showPasswordMatch){
+          <div class="text-success">Password matched successfully</div>
+          }
+        </div>
+      </div>
+      }
+
+            
+            }
+
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-2">
+            <button type="submit" class="btn btn-pur me-3 custom-focus-color">
+                {{this.Id?"Update":"Save"}}
+            </button>
+            <button type="button" class="btn custom-focus-color btn-pur"
+                routerLink="/admin/employee">View List</button>
+        </div>
+    </form>
+</div>

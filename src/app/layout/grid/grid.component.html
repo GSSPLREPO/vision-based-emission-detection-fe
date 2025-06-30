@@ -1,0 +1,12 @@
+<div class="card m-3 p-4">
+    <div class="cont">
+        <label for="pagination-limit" style="margin: 5px;">Show entries:</label>
+        <select id="pagination-limit" [(ngModel)]="limit" (change)="updateLimit()" style="padding: 3px;">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+    <div #gridContainer></div>
+</div>

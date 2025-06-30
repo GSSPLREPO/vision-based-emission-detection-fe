@@ -1,0 +1,141 @@
+
+<div class="d-flex justify-content-between align-items-center">
+  <div></div>
+      @if(addbutton && isInsert){
+        <div class="float-end mb-3">
+          <button class="btn btn-pur custom-focus-color" [routerLink]='pageURL'>+ {{addbutton}}</button>
+        </div>
+      }
+    </div>
+<div class="card mb-3 p-4">
+  <!-- <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Placeholder" (keyup)="doFilter($event)" />
+    </mat-form-field> -->
+  <div class="row g-3">
+    <div class="col-auto">
+      <!-- <input
+        type="email"
+        class="form-control mb-3"
+        id="exampleFormControlInput1"
+        (keyup)="doFilter($event)"
+          placeholder="🔍 Search"
+
+      /> -->
+      <div class="input-icon-wrapper">
+  <i class="fa fa-search"></i>
+  <input
+    type="email"
+    class="form-control mb-3 input-with-icon"
+    id="exampleFormControlInput1"
+    (keyup)="doFilter($event)"
+    placeholder="Search"
+  />
+</div>
+
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <div class="table-responsive">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        [matSortActive]="'position'"
+        [matSortDirection]="'asc'"
+        (matSortChange)="announceSortChange($event)"
+      >
+        <!-- Dynamic Column Headers -->
+        <ng-container *ngFor="let col of header" [matColumnDef]="col.key">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="mat-column"
+            [ngStyle]="col.style"
+          >
+            {{ col.label }}
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-column" [ngStyle]="col.tdStyle" [class]="col.class">
+            {{ col.render ? col.render(element[col.key]) : element[col.key] }}
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            class="mat-column"
+            style="text-align: center"
+          >
+            Actions
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="mat-column"
+            > 
+            <!-- style=" text-align: center" -->
+          <div class="d-flex justify-content-center">
+
+            @if(actions.includes('status') ){
+              <div [ngStyle]="{'visibility': element.status=='InProcess' ? 'visible' : 'hidden' }">
+                <i class="fa-solid fa-check fa-lg me-3"  title="Status" (click)="maintenanceStatus(element)"></i>
+              </div>
+            }
+
+            <!-- Edit Button -->
+            <!-- <i class="fas fa-pen fa-lg me-3" title="Edit" [routerLink]="pageURL+'/'+element.id"></i> -->
+             @if(actions.includes('update') && isEdit){
+              <!-- <div [ngStyle]="{'visibility': element.status=='InProcess' ? 'visible' : 'hidden' }"> -->
+                <div>
+                  <i class="fas fa-pen fa-lg me-3"  title="Edit" [routerLink]="'form/'+element.id"></i>
+                </div>
+              <!-- </div> -->
+             }
+
+            <!-- Delete Button -->
+            @if(actions.includes('delete') && isDelete){
+              <div>
+                <i
+                  class="fas fa-trash tamatar fa-lg"
+                  title="Delete"
+                  (click)="deleteItem(element)"
+                ></i>
+              </div>
+            }
+          </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <!-- <div class="mat-row" *matNoDataRow><div class="mat-cell no-data">No data</div></div> -->
+           <tr *matNoDataRow>
+             <td [colSpan]="displayedColumns.length" *ngIf="!showLoader" class="no-data">
+               No data available
+             </td>
+           </tr>
+
+       
+      </table>
+      @if(showLoader){
+        <div class="d-flex justify-content-center p-2 mb-3">
+          <span>
+            <i class="fa fa-spinner fa-spin me-2"></i>Loading
+          </span>
+        </div>
+
+      }
+    </div>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>

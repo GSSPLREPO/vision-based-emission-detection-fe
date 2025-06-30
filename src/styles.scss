@@ -1,1 +1,196 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+:root {
+  --theme-color: #202A44;
+  // --primary-color: #3498db;
+  // --secondary-color: #2ecc71;
+  // --font-size: 16px;
+}
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+$midas-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($midas-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($midas-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($midas-theme);
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap';
+// @import "@ng-select/ng-select/themes/default.theme.css";
+
+
+//top right bottom left
+// html, body { height: 100%; }
+body { margin: 0; font-family:  Calibri, 'Trebuchet MS', sans-serif; }
+
+
+.btn-pur{
+    border: 1px solid var(--theme-color);
+    font-weight: 500;
+    color: var(--theme-color);
+  }
+  .btn:hover{
+    background-color: var(--theme-color);
+    color: #fff;
+  }
+  .btn:focus{
+    background-color: var(--theme-color);
+    color: #fff;
+  }
+
+.tamatar{
+  color: tomato;
+}
+
+
+.form-control:focus {
+  border-color: #005cbb !important;
+  box-shadow: 0 0 0 0.1rem #005cbb !important; /* Optional: Change box-shadow if needed */
+  // border-color: var(--theme-color) !important;
+  // box-shadow: 0 0 0 0.1rem var(--theme-color) !important; /* Optional: Change box-shadow if needed */
+}
+
+.form-control{
+  border-color:lightgrey;
+}
+
+
+
+
+.custom-button{
+  // margin-top: 20px;
+  // width: 100px;
+  // height: 40px;
+  // border-radius: 5px;
+  // cursor: pointer;
+  border-color: var(--theme-color);
+  box-shadow: 0 0 0 0.1rem var(--theme-color);
+}
+
+// th, td {
+//   padding: 12px 15px;
+//   text-align: center;
+//   border-bottom: 1px solid #dee2e6;
+//   border-right: 1px solid #dee2e6;
+// }
+
+// th {
+//   // position: sticky;
+//   // top: 0;
+//   background-color: var(--theme-color);
+//   color: white;
+//   font-weight: bold;
+// }
+
+
+.toast-top-right {
+  // top: 62px ;
+  // right: 12px;
+  position: fixed !important;
+  z-index: 9999;
+}
+
+
+
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+// .form-control::placeholder {
+//   opacity: 0.7;
+// }
+
+// p::selection,
+// div::selection,
+// span::selection,
+// th::selection,
+// td::selection,
+// .form-label::selection {
+//   background: var(--theme-color);
+//   color: #fff;
+// }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.btn-excel{
+  color: green;
+  // background-color: black;
+  border: 1px solid;
+}
+
+.btn-excel:hover{
+  color: white;
+  background-color: green;
+  // border: 1px solid;
+}
+
+.btn-pdf{
+  color: red;
+  // background-color: black;
+  border: 1px solid;
+}
+
+.btn-pdf:hover{
+  color: white;
+  background-color: red;
+  // border: 1px solid;
+}
+
+// Fixing the center align bug: Rudy
+// td {
+//   text-align: center !important;
+// }

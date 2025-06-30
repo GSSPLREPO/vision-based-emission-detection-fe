@@ -1,0 +1,111 @@
+// .body {
+//     width: calc(100% - 4rem);
+//     // height: 100vh;
+//     min-width: 600px;
+//     min-height: 100vh;
+//     margin-left: 4rem;
+//     // z-index: 0;
+//     position: relative;
+//     top: 0;
+//     transition: all .5s ease;
+//     background: #EEEEEE;
+//     padding: 1rem;
+// }
+
+// .body-trimmed {
+//     width: calc(100% - 16.5625rem);
+//     margin-left: 16.5625rem;
+// }
+
+// .body-md-screen {
+//     width: calc(100% - 5rem);
+//     margin-left: 5rem;
+// }
+
+
+
+.footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+
+    background-color: #f8f9fa;;
+    // text-align: center;
+    
+  }
+
+.footer-trimmed{
+    width: calc(100% - 16.5625rem);
+    margin-left: 16.5625rem;
+    transition: all .5s;
+}
+
+.footer-md-screen {
+    width: calc(100% - 4rem);
+    margin-left: 4rem;
+    transition: all .5s;
+}
+
+.body {
+    width: calc(100% - 4rem);
+    min-width: 330px;
+    min-height: 100vh;
+    margin-left: 4rem;
+    position: relative;
+    top: 0;
+    transition: all .5s ease;
+    background: #EEEEEE;
+    padding: 1rem;
+    padding-bottom: 60px; /* Add space for footer */
+}
+
+.body-trimmed {
+    width: calc(100% - 16.5625rem);
+    margin-left: 16.5625rem;
+}
+
+.body-md-screen {
+    width: calc(100% - 4rem);
+    margin-left: 4rem;
+}
+
+
+@media screen and (max-width: 375px) {
+    .body {
+        width: 100%;
+        margin-left: 0;
+        min-height: calc(100vh - 60px); /* Subtract footer height */
+        padding-left: 5rem; /* Add padding for collapsed sidenav */
+    }
+
+    .body-trimmed,
+    .body-md-screen {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 5rem;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        // height: 60px;
+        background-color: #f8f9fa;
+        text-align: center;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        z-index: 20;
+    }
+    // .sidenav {
+    //     width: 4rem; /* Keep sidenav collapsed on small screens */
+    // }
+
+    // .sidenav-collapsed {
+    //     width: 4rem; /* Prevent expansion on small screens */
+    // }
+
+    // .sidenav .logo-container .logo-text {
+    //     display: none; /* Always hide text on small screens */
+    // }
+}

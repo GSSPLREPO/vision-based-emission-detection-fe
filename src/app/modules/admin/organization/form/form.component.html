@@ -1,0 +1,87 @@
+<form action="" [formGroup]="organizationForm">
+    <h5 class="ms-3">Details</h5>
+    <div class="card p-4 ms-3 me-3 mb-4">
+        <div class="row row-cols-1">
+
+            <!-- Name Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name" class="form-control custom-focus-color" id="name"
+                        placeholder="Enter Name" appAutofocus />
+                    @if(submitted && f.name.errors?.required){
+                        <div class="text-danger mt-1">Name is required</div>
+                    }
+                    @if(f.name.errors?.pattern){
+                        <div class="text-danger mt-1">Please provide valid name</div>
+                    }
+                </div>
+            </div>
+
+
+
+            <!-- Logo -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="logoUrl" class="form-label">Logo</label>
+                    <input type="file" class="form-control custom-focus-color" id="logoUrl" placeholder="Enter Logo"
+                        (change)="onFileChanged($event)" />
+                    <a href="{{url}}{{editFile}}" target="_blank" alt="">Image</a>
+                    <!-- <div *ngIf="submitted && f.logo.errors?.required" class="text-danger mt-1">
+                        Logo is required
+                      </div> -->
+                </div>
+            </div>
+
+
+            <!-- Address -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea formControlName="address" class="form-control custom-focus-color" id="address"
+                        placeholder="Enter Address" maxlength="140">
+                    </textarea>
+                </div>
+            </div>
+
+
+
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="emailId" class="form-label">Email<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control custom-focus-color" id="emailId" formControlName="email"
+                        placeholder="Enter Email" />
+                    @if(submitted && f.email.errors?.required){
+                        <div class="text-danger mt-1">Email is required</div>
+                    }
+                    @if(f.email.errors?.pattern){
+                        <div class="text-danger mt-1">Please provide valid Email</div>
+                    }
+                </div>
+            </div>
+
+            <!-- Contact No Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="contactNo" class="form-label">Contact No<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control custom-focus-color" id="contactNo"
+                        formControlName="contactNo" placeholder="Enter Contact Number" />
+                    @if(submitted && f.contactNo.errors?.required){
+                        <div class="text-danger mt-1">Contact No is required</div>
+                    }
+                    @if(f.contactNo.errors?.pattern){
+                        <div class="text-danger mt-1">Please provide valid Contact No</div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-4">
+            <button type="submit" class="btn btn-pur me-3 custom-focus-color" (click)="onSubmit()">
+                {{this.Id?"Update":"Save"}}
+            </button>
+            <button class="btn btn-pur custom-focus-color" routerLink="/admin/organization">View List</button>
+        </div>
+    </div>
+</form>

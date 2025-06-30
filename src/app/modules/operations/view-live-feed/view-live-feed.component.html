@@ -1,0 +1,41 @@
+<div class="video-page-container">
+  <!-- Error handling -->
+  <ng-container *ngIf="!error; else errorBlock">
+
+    <div class="feed-controls">
+      <h2>Live Chimney Monitoring</h2>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="showAnnotated" [disabled]="!baseFeedWorking" />
+        <span class="slider"></span>
+        <span class="label-text">Show Annotated Feed</span>
+      </label>
+    </div>
+
+    <div class="video-feeds">
+      <!-- Base Feed -->
+      <div class="video-box">
+        <h3>Main Feed</h3>
+        <img [src]="baseVideoUrl"
+             alt="Live feed"
+             (load)="onBaseLoad()"
+             (error)="onBaseError()" />
+      </div>
+
+      <!-- Annotated Feed -->
+      <div *ngIf="showAnnotated" class="video-box">
+        <h3>Annotated Feed</h3>
+        <img [src]="annotatedVideoUrl"
+             alt="Annotated feed" />
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Error message block -->
+  <ng-template #errorBlock>
+    <div class="error-box">
+      <h3>🚫 Unable to load video feed</h3>
+      <p>Ensure the camera and server are active.</p>
+      <button (click)="retry()">🔄 Retry</button>
+    </div>
+  </ng-template>
+</div>

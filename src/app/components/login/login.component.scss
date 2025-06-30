@@ -1,0 +1,132 @@
+
+form *{
+    // font-family: 'Poppins',sans-serif;
+    // color: #ffffff;
+    letter-spacing: 0.5px;
+    // outline: none;
+    // border: none;
+}
+form{
+    height: 500px;
+    width: 400px;
+    background-color: white;
+    // opacity: 0.9;
+    opacity: 0.85;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(5em);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    // padding: 40px 35px;
+    z-index: 10;
+}
+
+
+form .login-lable{
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+label{
+    color: black;
+    display: block;
+    // margin-top: 15px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+.icon {
+    position: absolute;
+    cursor: pointer;
+    top: 8px;
+    right: 15px;
+    z-index: 5;
+  }
+
+  .icon:hover {
+    color: var(--theme-color)
+  }
+
+
+button{
+    background-color: var(--theme-color);
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+
+}
+button:hover{
+    color: var(--theme-color);
+    background-color: white;
+    border: 1px solid var(--theme-color);
+}
+button:focus{
+    color: var(--theme-color);
+    background-color: white;
+    border: 1px solid var(--theme-color);
+}
+
+.logo-image {
+    width: 80px;
+    height: 60px;
+    // border-radius: 30px;
+    cursor: pointer;
+}
+
+.image-container{
+    // display: flex;
+    width: 100%;
+    text-align: center;
+    // height: 80px;
+    // align-items: center;
+    // justify-content: center;
+}
+
+.warn{
+    font-size: 13px;
+    color: red;
+}
+
+.password {
+    position: relative;
+  }
+
+
+  .loginbg{
+    filter: brightness(80%);
+    width: 100%;
+    height: 100vh;
+    background: url("/assets/bg.jpeg");
+    // background-image: url("/src/assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/assets/bg.jpg");
+    // background-position: left center;
+  }
+
+  .text-center a {
+    text-decoration: none;
+    color: inherit;
+}
+    /* Change color on hover */
+    .text-center a:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .footer-login{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        // margin-bottom: 5px;
+        // margin : 0 15px 15px 0
+    }
+
+    

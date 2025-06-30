@@ -1,0 +1,91 @@
+<div class="loginbg"></div>
+<form [formGroup]="logindata" (ngSubmit)="onSubmit()" class="p-3">
+  <div class="image-container">
+    <div>
+      <img src="/assets/logo.jpeg" alt="Logo" width="120px" />
+    </div>
+    <h3 style="margin-top:15px">Süd-Chemie</h3>
+  </div>
+  <!-- <span class="login-lable fw-bold mb-2">Asset Management System</span> -->
+
+  <div style="margin-top: 25px">
+    <label for="Username">Username</label>
+    <div class="form-group">
+      <!-- <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span> -->
+      <input
+        type="text"
+        class="form-control custom-focus-color"
+        formControlName="Username"
+        placeholder="Enter Username"
+        id="Username"
+      />
+      @if(f.Username.errors?.required && submitted){
+      <span class="warn"> Username is required</span>
+      }
+    </div>
+
+    <!-- @if(f.userName.touched){ -->
+    @if(f.Username.errors?.pattern){
+    <span class="warn"> Invalid Username</span>
+    }
+    <!-- } -->
+
+    <label for="Password">Password</label>
+    <div class="form-group">
+      <div class="password">
+        <div class="input-group">
+          <!-- <span class="input-group-text fw-bold" id="basic-addon1"><i class="bi bi-key"></i></span> -->
+          <input
+            [type]="fieldTextType ? 'text' : 'password'"
+            class="form-control custom-focus-color"
+            formControlName="Password"
+            placeholder="Enter Password"
+            id="Password"
+          />
+        </div>
+        <div class="icon">
+          <i
+            id="togglePassword"
+            class="fa-solid"
+            [ngClass]="{
+              'fa-eye': fieldTextType,
+              'fa-eye-slash': !fieldTextType
+            }"
+            (click)="toggleFieldTextType()"
+          ></i>
+        </div>
+      </div>
+
+      @if(f.Password.errors?.required && submitted){
+      <span class="warn"> Password is required</span>
+      } @if(f.Password.errors?.pattern){
+      <span class="warn"> Invalid Password</span>
+      }
+    </div>
+
+    <button class="btn btn-pur mt-3 w-100">
+      @if(showLoader){
+      <i class="fa fa-spinner fa-spin me-2"></i>Loading } @else{
+         Login }
+    </button>
+  </div>
+  <div class="footer-login p-1">
+    <!-- <div class="d-flex justify-content-between p-2">
+      <div class="">
+        <span style="vertical-align: middle" class="ms-2">Version: 0.0.0</span>
+      </div>
+    </div> -->
+     <div class="d-flex justify-content-between">
+                <div class="">
+                    <span>&copy; {{year}} All rights reserved</span>
+                </div>
+ 
+                <div class="">
+                    <span style="vertical-align: middle;">Version:0.0.0</span>
+                    <a href="https://garimasystem.com/" target="_blank" rel="noopener noreferrer" style="font-size: 14px; text-decoration: none; color: black;">                        
+                        <img src="/assets/GSSPL-Logo.png" alt="GSSPL Logo" title="Garima System Solutions" style="width: 20px; height: auto; vertical-align: middle;">
+                    </a>
+                </div>
+            </div>
+  </div>
+</form>

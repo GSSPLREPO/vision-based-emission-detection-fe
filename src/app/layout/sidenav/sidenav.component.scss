@@ -1,0 +1,328 @@
+.sidenav {
+  background: #f8f9f5;
+  transition: all 0.5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 4rem;
+  height: 100vh;
+  // box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+
+  .logo-container {
+    padding: 3px;
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // padding: 0.938rem 0 0 0.938rem;
+    // text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+
+
+    .logo-image {
+      // width: 30px;
+      // height: 50px;
+      // border-radius: 30px;
+      cursor: pointer;
+      position: sticky;
+      margin-top: 10px;
+    }
+
+    .logo-text {
+      margin-bottom: 1rem;
+      margin-left: 0.6rem;
+      font-size: 25px;
+      font-weight: 600;
+      color: var(--theme-color);
+    }
+  }
+}
+
+.sidenav-collapsed {
+  width: 16.5625rem;
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.6rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  // margin-top: 10px;
+
+  .sidenav-nav-item {
+    width: 100%;
+    margin-bottom: 0.2rem;
+
+    .sidenav-nav-link {
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+      color: #000;
+      text-decoration: none;
+      border-radius: 0.625rem;
+      transition: all 0.3s ease;
+
+      .sidenav-link-icon {
+        font-size: 18px;
+        width: 2.6rem;
+        min-width: 2.6rem;
+        // margin: 0 0.5rem;
+        text-align: center;
+      }
+
+      .sidenav-link-text {
+        margin-left: 0.4rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        flex-grow: 1;
+      }
+    }
+
+    .sidenav-nav-link:hover {
+      background-color: var(--theme-color);
+      color: #fff;
+
+      .menu-collapse-icon {
+        color: #fff;
+      }
+    }
+  }
+}
+
+// .sublevel-nav{
+//                 // position: absolute;
+//                 background-color: #000 !important;
+//             }
+
+.active {
+  background-color: var(--theme-color);
+
+  .menu-collapse-icon,
+  .sidenav-link-icon,
+  .sidenav-link-text {
+    color: #fff;
+  }
+}
+
+.active-sublevel {
+  color: var(--theme-color) !important;
+  font-weight: 800;
+
+  // opacity: 1 !important;
+}
+
+.menu-collapse-icon {
+  font-size: 15px;
+  width: 2rem;
+  min-width: 2rem;
+  margin: auto 0.5rem auto auto;
+  text-align: center;
+  color: #000;
+}
+
+.sublevel-nav {
+  list-style: none;
+  margin-left: 10px;
+  margin-top: 5px;
+  // position: absolute;
+  // z-index: 1000;
+  // top: 9rem;
+  // left: 16.75rem;
+  // background-color: palegreen;
+
+  .sublevel-nav-item {
+    border-bottom: 1px solid #ddd;
+    .sublevel-nav-link {
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      color: #000;
+      text-decoration: none;
+      border-radius: 0.625rem;
+      transition: all 0.3s ease;
+      width: 190px;
+      // margin-left: 50px;
+
+      .sublevel-link-icon {
+        font-size: 4px;
+        width: 2rem;
+        min-width: 2rem;
+        // margin: 0 0.5rem;
+        text-align: center;
+      }
+
+      .sublevel-link-text {
+        font-size: 16px;
+        margin-left: 0.3rem;
+        // text-overflow: ellipsis;
+        // overflow: hidden;
+        // white-space: nowrap;
+        // flex-grow: 1;
+        // white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    //child hover in sidebar
+    .sublevel-nav-link:hover {
+      // .sublevel-link-text {
+      //     font-size: 18px;
+      //     margin-left: 0.3rem;
+      // }
+      color: var(--theme-color);
+      font-weight: 800;
+    }
+  }
+}
+
+.scrollwrap {
+  overflow-x: hidden;
+  overflow-y: auto;
+  // visibility: hidden;
+  height: calc(100% - 5.65rem);
+}
+
+.sidenav-nav,
+.scrollwrap:hover,
+.scrollwrap:focus {
+  visibility: visible;
+}
+
+.scrollwrap_delayed {
+  transition: visibility 0.5s 0.2s;
+}
+
+.scrollwrap_delayed:hover {
+  transition: visibility 0.2s 0.2s;
+}
+
+// works on chrome, edge and safari
+.scrollwrap::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scrollwrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollwrap::-webkit-scrollbar-thumb {
+  background-color: #556268;
+  border-radius: 20px;
+}
+
+// works on firefox
+.scrollwrap {
+  scrollbar-width: thin;
+  scrollbar-color: #556268 transparent;
+}
+
+.head {
+  width: calc(100% - 4rem);
+  margin-left: 4rem;
+  z-index: 10;
+  transition: all 0.5s ease;
+  position: fixed;
+  top: 0;
+
+  .head-content {
+    background-color: #f8f9f5;
+    // height: 50px;
+    // padding: 0.5rem 0.5rem;
+  }
+}
+
+.head-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
+
+// .head {
+
+//     width: calc(100% - 4rem);
+//     margin-left: 4rem;
+//     z-index: 10;
+//     transition: all .5s ease;
+//     position: fixed;
+//     top: 0;
+// }
+
+// .head-content {
+//     background-color: #f8f9f5;
+//     height: 50px;
+//     padding: 0.5rem 0.5rem;
+// }
+
+.head-content h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.user-name {
+  // margin-right: 1rem;
+  // font-size: 1rem;
+  font-weight: 500;
+  // font-style: bold;
+}
+
+.fa-bars,
+.fa-power-off {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .head {
+    width: calc(100% - 4rem);
+    margin-left: 4rem;
+  }
+
+  .head-trimmed {
+    width: calc(100% - 16.5625rem);
+    margin-left: 16.5625rem;
+  }
+
+  .head-content h4 {
+    font-size: 1.25rem;
+  }
+}
+
+hr {
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav-heading {
+  color: #556268;
+  font-size: 18px;
+  padding: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  // margin-top: 5px;
+}
+
+// @media (max-width: 767px) {
+//     .head-content > div {
+//         flex-wrap: wrap;
+//     }
+
+//     .head-content > div > div:nth-child(2) {
+//         order: -1;
+//         width: 100%;
+//         text-align: center;
+//         margin-bottom: 0.5rem;
+//     }
+// }
+
+.headLable {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-grow: 1;
+}

@@ -1,0 +1,19 @@
+<div class="video-container">
+  <div class="video-header">
+    <h2>Live CCTV Feed</h2>
+  </div>
+
+  <div class="video-wrapper" *ngIf="!hasError; else errorTemplate">
+    <img [src]="videoUrl" alt="Live video feed"
+         (load)="onLoad()"
+         (error)="onError()" />
+  </div>
+
+  <ng-template #errorTemplate>
+    <div class="error-box">
+      <h3>🚫 Unable to load annotations feed</h3>
+      <p>Please check your camera connection or check if the server is running or try again later.</p>
+      <button (click)="retry()">Retry</button>
+    </div>
+  </ng-template>
+</div>

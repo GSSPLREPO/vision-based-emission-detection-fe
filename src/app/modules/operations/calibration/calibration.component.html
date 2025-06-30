@@ -1,0 +1,27 @@
+<div class="video-overlay-container">
+  <img [src]="videoFeedUrl" alt="Live Feed" #videoElement class="video-feed">
+  <canvas #overlayCanvas class="overlay-canvas"></canvas>
+</div>
+
+<form (ngSubmit)="submitChimneys()">
+  <div *ngFor="let chimney of chimneys" class="chimney-form">
+    <label>
+      <input
+        type="checkbox"
+        [(ngModel)]="selected[chimney.id]"
+        (change)="onCheckboxChange()"
+        name="select_{{chimney.id}}"
+      />
+      Chimney {{ chimney.id }}
+    </label>
+
+    <input
+      type="text"
+      [(ngModel)]="names[chimney.id]"
+      name="label_{{chimney.id}}"
+      placeholder="Enter chimney name"
+    />
+  </div>
+
+  <button type="submit">Submit Selected Chimneys</button>
+</form>

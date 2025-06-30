@@ -1,0 +1,23 @@
+<div class="step2-container">
+  <h2>Step 2: Draw Additional Chimney Boxes</h2>
+
+  <div class="canvas-wrapper" style="position: relative;">
+    <img [src]="annotated_feed" #imgRef (load)="onImageLoad()" style="width: 100%; display: block;">
+    
+    <canvas
+      #canvasRef
+      (mousedown)="onMouseDown($event)"
+      (mousemove)="onMouseMove($event)"
+      (mouseup)="onMouseUp($event)"
+      style="position: absolute; top: 0; left: 0; z-index: 2;"
+    ></canvas>
+  </div>
+
+  <div *ngFor="let box of drawnBoxes; let i = index" class="box-label">
+    <label>Box {{ i + 1 }}:
+      <input type="text" [(ngModel)]="box.label" placeholder="Enter name">
+    </label>
+  </div>
+
+  <button (click)="submitDrawnBoxes()">Submit Drawn Chimneys</button>
+</div>

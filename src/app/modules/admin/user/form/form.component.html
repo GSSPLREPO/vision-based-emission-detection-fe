@@ -1,0 +1,216 @@
+<div class="card p-3 ms-3 me-3">
+    <!-- Example usage of the SafeHtmlPipe -->
+  <form action="" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="row row-cols-1">
+
+      <!-- User Type Field -->
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group mb-3">
+          <label for="userType" class="form-label">User Type<span class="text-danger">*</span></label>
+          <ng-select [items]="userType" bindLabel="name" bindValue="name" placeholder="--Select--" formControlName="userType" autofocus (change)="getUserType($event)">
+          </ng-select>
+          <div *ngIf="submitted && f.userType.errors?.required" class="text-danger mt-1">
+            User Type is required
+          </div>
+        </div>
+      </div>
+
+      @if(f.userType.value == 'External'){
+        <!-- Name Field -->
+        <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+          <div class="form-group mb-3">
+            <label for="fullName" class="form-label">Name<span class="text-danger">*</span></label>
+            <input type="text" formControlName="name" class="form-control custom-focus-color" id="fullName"
+              placeholder="Enter Name"  maxlength="50"/>
+            <div *ngIf="submitted && f.name.errors?.required" class="text-danger mt-1">
+              Name is required
+            </div>
+            @if(f.name.errors?.pattern){
+              <div  class="text-danger mt-1">
+                Please provide a valid Name 
+              </div>
+            }
+          </div>
+        </div>
+      }
+    
+      @if(f.userType.value == 'Internal'){
+        <!-- Employee Name Field -->
+        <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+          <div class="form-group mb-3">
+            <label for="employeeId" class="form-label">Employee Name<span class="text-danger">*</span></label>
+            <ng-select [items]="employee" bindLabel="name" bindValue="id" placeholder="--Select--" formControlName="employeeId" (change)="getEmployee($event)">
+            </ng-select>
+            <div *ngIf="submitted && f.employeeName.errors?.required" class="text-danger mt-1">
+              Employee Name is required
+            </div>
+          </div>
+        </div>
+
+        <!-- Employee Code Field -->
+        <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+          <div class="form-group mb-3">
+            <label for="employeeCode" class="form-label">Employee Code<span class="text-danger">*</span></label>
+            <input type="text" formControlName="employeeCode" class="form-control custom-focus-color" id="employeeCode"
+              placeholder="Enter Employee Code" maxlength="50"/>
+            <div *ngIf="submitted && f.employeeCode.errors?.required" class="text-danger mt-1">
+              Employee Code is required
+            </div>
+            <!-- @if(f.employeeCode.errors?.pattern){
+              <div  class="text-danger mt-1">
+                Please provide a valid employeeCode 
+              </div>
+            } -->
+          </div>
+        </div>
+      }
+
+      <!-- Role Field -->
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group mb-3">
+          <label for="roleId" class="form-label">Role<span class="text-danger">*</span></label>
+          <ng-select [items]="roles" bindLabel="name" bindValue="id" placeholder="--Select--" formControlName="roleId">
+          </ng-select>
+          <div *ngIf="submitted && f.roleId.errors?.required" class="text-danger mt-1">
+            Role is required
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Email Field -->
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" formControlName="email" class="form-control custom-focus-color" id="email"
+            placeholder="Enter Email" />
+          <div *ngIf="submitted && f.email.errors?.required" class="text-danger mt-1">
+            Email is required
+          </div>
+          <div *ngIf="f.email.errors?.pattern" class="text-danger mt-1">
+            Please provide a valid email
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Number Field -->
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group mb-3">
+          <label for="mobileNo" class="form-label">Contact Number<span class="text-danger">*</span></label>
+          <input type="text" formControlName="mobileNo" class="form-control custom-focus-color" id="mobileNo"
+            placeholder="Enter Contact Number" />
+          <div *ngIf="submitted && f.mobileNo.errors?.required" class="text-danger mt-1">
+            Contact Number is required
+          </div>
+          <div *ngIf="f.mobileNo.errors?.pattern" class="text-danger mt-1">
+            Provide proper Contact Number
+          </div>
+        </div>
+      </div>
+
+      <!-- Username Field -->
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group mb-3">
+          <label for="userName" class="form-label">Username<span class="text-danger">*</span></label>
+          <input type="text" formControlName="userName" class="form-control custom-focus-color" id="userName"
+            placeholder="Enter Username" maxlength="50"/>
+          <div *ngIf="submitted && f.userName.errors?.required" class="text-danger mt-1">
+            Username is required
+          </div>
+          @if(f.userName.errors?.pattern){
+            <div class="text-danger mt-1">
+              Invalid Username
+            </div>
+          }
+        </div>
+      </div>
+
+       <!-- Change Password Field on edit-->
+      @if(Id){
+        
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-check" style="margin-top: 25px;margin-bottom: 15px;">
+          <input class="form-check-input custom-check custom-focus-color" type="checkbox" id="change_password"
+            formControlName="change_password" (ngModelChange)="getChangeVal($event)">
+          <label class="form-check-label" for="change_password">
+            Change Password
+          </label>
+        </div>
+      </div>
+      }
+      <!-- Password Field-->
+      @if(!Id || f.change_password.value){
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group">
+          <label for="Password" class="form-label"
+            >Password<span class="text-danger">*</span></label
+          >
+          <div class="input-group">
+            <input
+              [type]="passwordType"
+              class="form-control custom-focus-color"
+              id="Password"
+              placeholder="Password"
+              autocomplete="off"
+              formControlName="password"
+              title="Enter valid password"
+              maxlength="50"
+              (ngModelChange)="passwordMatch()"
+            />
+            <span class="input-group-text" (click)="togglePassword()">
+              <i
+                class="pointer fa fa-eye{{
+                  passwordType === 'text' ? '-slash' : ''
+                }}"
+              ></i>
+            </span>
+          </div>
+          @if(submitted && f.password.errors?.required){
+          <div class="text-danger">Password is required</div>
+          } @if(f.password.errors?.pattern){
+          <div class="text-danger">
+            Password must be alest 8 character,one small letter,one capital
+            letter, one number and special character
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Confirm Password Field-->
+      <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+        <div class="form-group">
+          <label for="ConfirmPassword" class="form-label"
+            >Confirm Password<span class="text-danger">*</span></label
+          >
+          <input
+            type="password"
+            class="form-control custom-focus-color"
+            id="ConfirmPassword"
+            placeholder="Confirm Password"
+            autocomplete="off"
+            formControlName="confirm_password"
+            title="Enter valid password"
+            (ngModelChange)="passwordMatch()"
+          />
+          @if(submitted && f.confirm_password.errors?.required){
+          <div class="text-danger">Confirm Password is required</div>
+          } @if(showPasswordMatch && !f.confirm_password.errors?.required){
+          <div class="text-danger">Password do not match</div>
+          } @if(f.confirm_password?.value && !showPasswordMatch){
+          <div class="text-success">Password matched successfully</div>
+          }
+        </div>
+      </div>
+      }
+
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="mt-4">
+      <button type="submit" class="btn custom-focus-color btn-pur me-3">
+        {{this.Id?"Update":"Save"}}
+      </button>
+      <button type="button" class="btn custom-focus-color btn-pur" routerLink="/admin/user/">View List</button>
+    </div>
+  </form>
+</div>

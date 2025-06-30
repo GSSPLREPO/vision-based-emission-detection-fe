@@ -1,0 +1,16 @@
+// table.dataTable th {
+//   text-align: center;
+// }
+
+#input-custom {
+  display: none;
+}
+
+th.mat-header-cell {
+  text-align: center !important;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}

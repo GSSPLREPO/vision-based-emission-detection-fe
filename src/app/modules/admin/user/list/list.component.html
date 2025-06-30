@@ -1,0 +1,20 @@
+<!-- <app-common-grid
+    [header]="header"
+    [apiURL]="'api/Users/GetAllUsers'"
+    [deleteURL]="'api/Users/DeleteUser'"
+    [dataSource]="'users'"
+    [pageURL]="'/admin/user/form'"
+    [addbutton]="'User'"
+></app-common-grid> -->
+
+
+
+<app-material-grid
+    [header]="header"
+    [apiURL]="'/api/Users/GetAllUsers'"
+    [pageURL]="'/admin/user/form'"
+    [deleteURL]="'/api/Users/DeleteUser'"
+    [source]="'users'"
+    [actions]="['update', 'delete']"
+    [addbutton]="'Users'"
+></app-material-grid>

@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+ 
+<div class="card p-4 ms-3 me-3 about-us-container">
+  <!-- Logo -->
+  <!-- <div class="text-center mb-4">
+    <img src="assets/MainLogo.png" alt="MIDAS AMS Logo" class="img-fluid" style="height: 120px;" />
+  </div> -->
+ 
+ <!-- Heading with Image -->
+
+ <div style="font-family: Arial, sans-serif; line-height: 1.8;">
+  <p style="margin-bottom: 20px;">
+    <span style="color:#1E90FF; font-size: 20px; font-weight:bold;">📌 Product Brief</span>
+  </p>
+
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">✅</span>
+      <span style="color:#000;"> This product aims to </span>
+      <span style="color:#FF8C00; font-weight: bold;">automatically detect chimney gas emissions</span>
+      <span style="color:#000;"> from CCTV or IP camera feeds.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">🔍</span>
+      <span style="color:#000;"> We use a custom-trained </span>
+      <span style="color:#9932CC; font-weight:bold;">YOLOv12 model</span>
+      <span style="color:#000;"> to detect chimneys in real-time video streams.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">🎨</span>
+      <span style="color:#000;"> After chimney detection, a region above it is scanned using </span>
+      <span style="color:#20B2AA; font-weight:bold;">OpenCV color detection</span>
+      <span style="color:#000;"> to identify </span>
+      <span style="color:#FFD700; font-weight:bold;">yellow-colored gases</span>
+      <span style="color:#000;">, which may indicate pollution or chemical emissions.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">📦</span>
+      <span style="color:#000;"> The detection results are tracked using </span>
+      <span style="color:#FF1493; font-weight:bold;">SORT/DeepSORT algorithms</span>
+      <span style="color:#000;"> to assign unique IDs to chimneys and follow them over time.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">💾</span>
+      <span style="color:#000;"> All detections and alerts are logged into an </span>
+      <span style="color:#4682B4; font-weight:bold;">MSSQL database</span>
+      <span style="color:#000;"> for reporting, auditing, and evidence storage.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">📡</span>
+      <span style="color:#000;"> The system supports real-time streaming using </span>
+      <span style="color:#008B8B; font-weight:bold;">WebSocket-based communication</span>
+      <span style="color:#000;"> between client and server.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">🧠</span>
+      <span style="color:#000;"> Calibration workflows help reconfigure detection zones if the </span>
+      <span style="color:#DC143C; font-weight:bold;">camera moves or is disturbed</span>
+      <span style="color:#000;">. Users can manually adjust chimneys if needed.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">📲</span>
+      <span style="color:#000;"> In future releases, the system will send </span>
+      <span style="color:#FF4500; font-weight:bold;">SMS alerts</span>
+      <span style="color:#000;"> to authorities in case of yellow gas detection or camera tampering.</span>
+    </li>
+    
+    <li style="margin-bottom: 16px;">
+      <span style="color:#32CD32;">🎯</span>
+      <span style="color:#000;"> Overall, we aim to build a </span>
+      <span style="color:#006400; font-weight:bold;">scalable, real-time environmental monitoring solution</span>
+      <span style="color:#000;"> that empowers industries and agencies to respond faster to pollution events.</span>
+    </li>
+  </ul>
+</div>
+
+<!-- Contact Section as a separate centered block -->
+<div class="card p-4 ms-3 me-3 about-us-container mt-4">
+  <div class="text-center mb-3">
+    <h5 style="color: #3910ae;">
+      <i class="bi bi-envelope-fill me-2"></i> Contact Us
+    </h5>
+    <p class="text-secondary mb-0">
+      Reach out to us for any queries or support.
+    </p>
+  </div>
+  <!-- Company Name with Logo -->
+<div class="d-flex justify-content-center align-items-center mb-3 gap-3">
+  <img src="assets/GSSPL-Logo.png" alt="Garima Logo" style="height: 50px; width: auto;" />
+  <h3 class="fw-bold" style="color: #3910ae; margin: 0;">Garima System Solutions Pvt. Ltd.</h3>
+</div>
+  <!-- Contact details with space between icon and text -->
+  <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-4 text-secondary mt-1">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-envelope text-primary fs-5"></i>
+        <a href="mailto:info&#64;garimasystem.com">info&#64;garimasystem.com</a>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <!-- <i class="bi bi-globe text-primary fs-5"></i>
+      <a href="https://garimasystem.com/#/" target="_blank" class="text-decoration-none text-secondary">garimasystem.com</a> -->
+      <div>
+      <i class="bi bi-globe me-1 text-primary"></i>
+      <a href="https://garimasystem.com/#/" target="_blank">garimasystem.com</a>
+    </div>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-telephone-fill text-primary fs-5"></i>
+      <span>+91 82009 51300</span>
+    </div>
+  </div>
+ 
+  <!-- Address in multiple lines -->
+  <p class="mt-1 text-center text-secondary">
+    <i class="bi bi-geo-alt-fill me-2 text-primary"></i>
+    301, Purusharth Avenue, Radhakrishna Cross Roads,<br />
+    Nr. HDFC Bank, Off, Old Padra Rd, Akota,<br />
+    Vadodara, Gujarat-390020
+  </p>
+</div> 

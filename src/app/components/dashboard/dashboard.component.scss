@@ -1,0 +1,306 @@
+
+
+  
+ 
+  .card-primary {
+    color: black;
+    // color: white;
+    border-radius: 10px;
+    // border-bottom: 5px solid;
+  }
+  .card-secondary {
+    color: black;
+    // color: white;
+    border-radius: 10px;
+    // border-bottom: 5px solid;
+  }
+  .card-blue {
+    background-color: #122C54;
+    color: white;
+    border-radius: 10px;
+  }
+  .card-greenshade {
+    background-color: #486043;
+    color: white;
+    border-radius: 10px;
+  }
+  .card-pink {
+    background-color: #B36B82;
+    color: white;
+    border-radius: 10px;
+  }
+  .card-orange {
+    background-color: #F3A712;
+    color: white;
+    border-radius: 10px;
+  }
+  .value {
+    font-size: 24px;
+    font-weight: bold;
+    // margin: 10px 0px;
+  }
+  .section-title {
+    color: lightblue;
+    font-weight: 400;
+  }
+  
+
+
+
+
+  .box {
+    width: auto;
+    height: 220px; /* Adjusted height for padding */
+    border-radius: 10px;
+    background-color: #F8F8F8;
+    border: 1px solid #ddd;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+
+  .card-body-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Adjust width if necessary */
+    min-width: 600px;
+    // overflow: auto;
+    height: 400px; /* Adjust height as necessary */
+  }
+
+.demo-chart {
+  width: 100%;
+  height: 100%;
+}
+ 
+  
+  .scrollable-content {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+
+  
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.section-container {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(15, 6, 6, 0.1);
+}
+
+// .button-grid {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 15px;
+//   justify-content: center;
+// }
+
+// .button-card {
+
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 120px;
+//   height: 40px;
+//   color: #fff;
+//   border-radius: 50px;
+//   border: none;
+//   outline: none;
+//   cursor: pointer;
+//   position: relative;
+//   // box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+//   overflow: hidden;
+// }
+
+// .button-card:hover {
+//   transform: translateY(-5px);
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// }
+
+// .button-card span {
+//   font-weight: bold;
+//   text-align: center;
+// }
+
+// /* Color schemes for different sections */
+// .section-button-card {
+//   background-color: #3910ae;
+//   color: #ffffff;
+// }
+
+// .section-container:nth-child(2) .button-card {
+//   background-color: #d1ecf1;
+//   color: #0c5460;
+// }
+
+// .section-container:nth-child(3) .button-card {
+//   background-color: #d4edda;
+//   color: #155724;
+// }
+
+.section-button-card-green{
+  background: green !important;
+  color: #ffffff !important;
+}
+
+.section-button-card-red{
+  background: #EE4E4E !important;
+  color: #ffffff !important;
+}
+.small-box-green{
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: green;
+}
+
+.small-box-red{
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: #EE4E4E;
+}
+
+.legend-text {
+  font-size: 20px; 
+}
+
+
+/* Accordion container */
+.accordion {
+  // max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  // overflow: hidden;
+}
+
+/* Accordion item */
+.accordion-item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+/* Accordion header */
+.accordion-header {
+  background-color: #ffffff;
+}
+
+.accordion-button {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #3498db;
+  background-color: #ecf0f1;
+}
+
+.accordion-button:hover {
+  background-color: #f7f9fa;
+}
+
+.accordion-button::after {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+
+/* Accordion body */
+.accordion-collapse {
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.accordion-body {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+}
+
+/* Button grid */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Button card */
+.button-card {
+  background-color: #ffffff;
+  color: #2c3e50;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-card.active {
+  background-color: #3498db;
+  color: #ffffff;
+  border-color: #3498db;
+}
+
+.button-card span {
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .accordion {
+    margin: 1rem;
+  }
+
+  .accordion-button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .accordion-body {
+    padding: 1rem;
+  }
+
+  .button-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

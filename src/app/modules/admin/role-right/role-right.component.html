@@ -1,0 +1,73 @@
+<form [formGroup]="rolePermissionsForm" (ngSubmit)="onSubmit()">
+  <div class="card p-3 m-3">
+    <div style="width: 300px;">
+      <div class="form-group mb-3">
+        <label for="userType" class="form-label">Select Role: </label>
+        <ng-select [items]="roles" bindLabel="name" bindValue="id" placeholder="--Select--" class="custom-placeholder" formControlName="roleId" (ngModelChange)="getValue($event)" autofocus>
+        </ng-select>
+      </div>
+    </div>
+  </div>
+  @if(f.roleId.value){
+
+    <div class="card p-3 m-3" formArrayName="permissions">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <!-- <div class="mb-4">
+                <input type="checkbox" [checked]="allSelected" (change)="checkAll($event)" id="checkAll" />
+                <label for="checkAll">Check All</label>
+              </div> -->
+              Screens
+            </th>
+            <th>Insert</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of navbarData; let i = index" [formGroupName]="i" class="nav-item">
+              <td>
+                <input 
+                  type="checkbox"  
+                  formControlName="view" 
+                  id="{{item.label}}" 
+                  (ngModelChange)="item.parentId == null ? onParentChange(item.id, $event) : onChildChange(item.id, $event)" 
+                />
+                <label for="{{item.label}}" class="check-label" [ngClass]="{' parent' : item.parentId == null }">{{ item.label }}</label>
+              </td>
+            
+            <td>
+              @if(item.checkList?.includes('insert')){
+                @if(item.parentId){
+                  <input type="checkbox" id="{{item.label}}"  formControlName="insert"/>
+                }
+              }
+            </td>
+            <td>
+                @if(item.checkList?.includes('update')){
+                @if(item.parentId){
+                  <input type="checkbox" id="{{item.label}}"  formControlName="update"/>
+                }
+              }
+              </td>
+            <td>
+              @if(item.checkList?.includes('delete')){
+                @if(item.parentId){
+                  <input type="checkbox" id="{{item.label}}"  formControlName="delete"/>
+                }
+              }
+            </td>
+  
+          </tr>
+          <!-- <tr></tr> -->
+        </tbody>
+        @if(this.isInsert){
+          <button class="btn btn-pur mt-3 custom-focus-color" type="submit">Submit</button>
+        }
+      </table>
+    </div>
+  }
+</form>
+

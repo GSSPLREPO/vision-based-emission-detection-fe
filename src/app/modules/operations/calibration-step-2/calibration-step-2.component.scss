@@ -1,0 +1,14 @@
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 20px;
+}
+
+canvas {
+  border: 1px solid #ccc;
+}
+
+.box-label {
+  margin: 10px 0;
+}

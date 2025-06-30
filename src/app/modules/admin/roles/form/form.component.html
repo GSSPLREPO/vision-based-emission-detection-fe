@@ -1,0 +1,40 @@
+
+<!-- <h2 >Role</h2> -->
+
+<div class="card p-3 ms-3 me-3">
+    <form appFocusInvalidInput [formGroup]="roleForm" (ngSubmit)="onSubmit()" >
+    <div class="row row-cols-1">
+
+        <!-- Name Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="fullName" class="form-label">Name<span class="text-danger">*</span></label>
+                    <input type="text" formControlName="name" class="form-control custom-focus-color" id="fullName" 
+                        placeholder="Enter Name" maxlength="140" appAutofocus/>
+                        <div *ngIf="submitted && f.name.errors?.required" class="text-danger mt-1">
+                            Name is required
+                          </div>
+                          <div *ngIf="f.name.errors?.pattern" class="text-danger mt-1">
+                            Name can only contain letters and single spaces between words
+                        </div>
+                </div>
+            </div>
+
+            <!-- Description Field -->
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="description" class="form-label">Description</label>
+                        <textarea formControlName="description" placeholder="Enter Description" class="form-control custom-focus-color" id="description" maxlength="140"></textarea>
+                </div>
+            </div>        
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-2">
+            <button type="submit" class="btn btn-pur me-3 custom-focus-color">
+                {{this.Id?"Update":"Save"}}
+            </button>
+            <button type="button" class="btn btn-pur custom-focus-color" routerLink="/admin/role">View List</button>
+        </div>
+    </form>
+</div>

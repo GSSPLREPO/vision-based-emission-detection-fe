@@ -1,0 +1,9 @@
+import { global_const } from "../config/global-constants";
+
+export const environment = {
+  production: false,
+  // Anand Backend
+  apiUrl: "http://192.168.1.27:8082"
+  // Rudy Backend
+  // apiUrl: "http://192.168.31.204:6969"
+};

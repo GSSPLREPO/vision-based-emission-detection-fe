@@ -1,0 +1,29 @@
+<div class="card p-4">
+  <div class="d-flex justify-content-between align-items-center">
+  <div></div>
+      @if(addbutton && isInsert){
+        <div class="float-end mb-2">
+          <button class="btn btn-pur custom-focus-color" [routerLink]='pageURL'>+ {{addbutton}}</button>
+          @if(bulkUploadButton){
+            <button class="btn btn-pur custom-focus-color ms-2" [routerLink]='bulkUploadURL'> <i class="fa-solid fa-upload me-2"></i>{{bulkUploadButton}}</button>
+          }
+        </div>
+      }
+    </div>
+  <div class="table-responsive">
+    <table #example class="display nowrap table-bordered" style="width:100%">
+      <!-- <thead>
+        <tr>
+          @for( d of header; track d){
+              @if(d.title == 'Actions' || d.title == 'Action' || d.title == 'Sr.No'){
+                  <th style="width: 10%;"></th>
+              }
+              @else {
+                  <th> </th>
+              }
+          }
+        </tr>
+      </thead> -->
+  </table>
+  </div>
+</div>

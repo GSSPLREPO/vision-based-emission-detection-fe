@@ -1,0 +1,17 @@
+<!-- <app-common-grid
+[header]="header"
+[apiURL]="'api/Role/GetAllRole'"
+[deleteURL]="'api/Role/Delete'"
+[dataSource]="'data'"
+[pageURL]="'/admin/role/form'"
+[addbutton]="'Role'"
+></app-common-grid> -->
+
+<app-material-grid 
+[header]="headers"
+[apiURL]="'/api/Role/GetAllRoles'"
+[pageURL]="'/admin/role/form'"
+[actions]="['update','delete']"
+[deleteURL]="'/api/Role/DeleteRole'"
+[addbutton]="'Role'"
+/>

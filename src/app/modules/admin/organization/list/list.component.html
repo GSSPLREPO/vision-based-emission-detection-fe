@@ -1,0 +1,20 @@
+<!-- <app-common-grid
+  [header]="header"
+  [apiURL]="'api/Organization/GetAllOrganization'"
+  [dataSource]="'data'"
+  [pageURL]="'/admin/organization/form'"
+></app-common-grid> -->
+
+<!-- <app-grid
+[header]="header"
+  [apiURL]="'api/Organization/GetAllOrganization'"
+></app-grid> -->
+
+<app-material-grid 
+[header]="headers"
+[apiURL]="'/api/Organization/GetAllOrganizations'"
+[pageURL]="'/admin/organization/form'"
+[source]="'data'"
+[source2]="'organization'"
+[actions]="['update']"
+/>

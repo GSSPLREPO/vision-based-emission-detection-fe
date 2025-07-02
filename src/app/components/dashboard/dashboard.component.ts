@@ -18,6 +18,11 @@ import { CustomCurrencyPipe } from '../../shared/pipes/custom-currency.pipe';
   providers: [DatePipe,CustomCurrencyPipe]
 })
 export class DashboardComponent implements OnInit{
+  constructor
+  (
+    apiService: ApiService
+  ) {}
+
   ngOnInit(): void {
   }
 }

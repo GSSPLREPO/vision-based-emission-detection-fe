@@ -5,23 +5,27 @@ import { RoleRightComponent } from './role-right/role-right.component';
 
 const routes: Routes = [
   {
-    path: 'user',
+    path: 'users',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
   {
-    path: 'employee',
+    path: 'employees',
     loadChildren: () => import('./employee/employee.module').then((m) => m.EmployeeModule),
   },
   {
-    path: 'role',
+    path: 'roles',
     loadChildren: () => import('./roles/roles.module').then((m) => m.RolesModule),
   },
   {
-    path: 'organization',
+    path: 'organizations',
     loadChildren: () => import('./organization/organization.module').then((m) => m.OrganizationModule),
   },
   {
-    path: 'role-right',
+    path: 'departments',
+    loadChildren: () => import('./department/department.module').then((m) => m.DepartmentModule),
+  },
+  {
+    path: 'role-rights',
     component: RoleRightComponent,
   },
 ]

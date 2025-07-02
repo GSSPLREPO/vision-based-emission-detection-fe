@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 // import { ToastrService } from 'ngx-toastr';
 // import { ApiService } from '../../services/api-service.service';
-import { global_const } from '../../../config/global-constants';
+import { global_const, version } from '../../../config/global-constants';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../../../services/api.service';
 import { encryptData } from '../../../services/utils';
@@ -29,6 +29,7 @@ export class LoginComponent {
   showLoader = false;
   submitted = false;
   year = new Date().getFullYear();
+  version: string = ""
 
   public FnYears: any = [];
   constructor(
@@ -40,6 +41,16 @@ export class LoginComponent {
     public reusable: ReusableAPIService
   ) {
     this.titleService.setTitle(`SÜD-CHEMIE`);
+
+    apiService.getVersion()
+    .subscribe(
+      (data: any) => {
+        this.version = data.data
+        localStorage.setItem('version', this.version)
+        version.set(this.version)
+      }
+    )
+
     this.logindata = this._fb.group({
       Username: [
         null,

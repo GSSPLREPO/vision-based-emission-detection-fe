@@ -74,6 +74,47 @@
                     }
                 </div>
             </div>
+
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="panno" class="form-label">PAN No</label>
+                    <input type="text" class="form-control custom-focus-color" id="panno"
+                        formControlName="panno" placeholder="Enter PAN No." />
+                    @if (f.panno.errors?.pattern) {
+                        <div class="text-danger mt-1">Please provide valid PAN No.</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="gstno" class="form-label">GST No</label>
+                    <input type="text" class="form-control custom-focus-color" id="gstno"
+                        formControlName="gstno" placeholder="Enter GST No." />
+                        @if (f.gstno.errors?.pattern)
+                        {
+                            <div class="text-danger mt-1">Please provide valid GST No.</div>
+                        }
+                </div>
+            </div>
+
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="label" class="form-label">Organization Label<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control custom-focus-color" id="label"
+                        formControlName="organizationLabel" placeholder="Enter Organization Label for Top Left" maxlength="10"/>
+                </div>
+            </div>
+
+
+            <div class="col col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div class="form-group mb-3">
+                    <label for="label" class="form-label">Software Version</label>
+                    <input type="text" class="form-control custom-focus-color" id="version"
+                        formControlName="softwareVersion" placeholder="Enter Version" />
+                </div>
+            </div>
+
         </div>
 
         <!-- Action Buttons -->
@@ -81,7 +122,7 @@
             <button type="submit" class="btn btn-pur me-3 custom-focus-color" (click)="onSubmit()">
                 {{this.Id?"Update":"Save"}}
             </button>
-            <button class="btn btn-pur custom-focus-color" routerLink="/admin/organization">View List</button>
+            <button class="btn btn-pur custom-focus-color" routerLink="/admin/organizations">View List</button>
         </div>
     </div>
 </form>

@@ -69,7 +69,7 @@
                     <label for="department" class="form-label">Department<span
                             class="text-danger">*</span></label>
                     <ng-select [items]="department" bindLabel="name"
-                        bindValue="id" placeholder="--Select--"
+                        bindValue="id" placeholder="--Select Department--"
                         formControlName="departmentId">
                     </ng-select>
                     <div *ngIf="submitted && f.departmentId.errors?.required"
@@ -372,7 +372,7 @@
                 {{this.Id?"Update":"Save"}}
             </button>
             <button type="button" class="btn custom-focus-color btn-pur"
-                routerLink="/admin/employee">View List</button>
+                routerLink="/admin/employees">View List</button>
         </div>
     </form>
 </div>

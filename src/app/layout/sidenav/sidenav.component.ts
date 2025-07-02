@@ -8,6 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import {
   Component,
+  effect,
   ElementRef,
   EventEmitter,
   HostListener,
@@ -20,7 +21,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TreeViewComponent } from '../tree-view/tree-view.component';
 import { fadeInOut, INavbarData } from './helper';
 import { commonData, inventoryData, navbarData } from './nav-data';
-import { global_const, remove_tokens } from '../../../config/global-constants';
+import { global_const, label, remove_tokens } from '../../../config/global-constants';
 import Swal from 'sweetalert2';
 import { ApiService } from '../../../services/api.service';
 import { buildHierarchy, decryptData, encryptData } from '../../../services/utils';
@@ -63,6 +64,7 @@ export class SidenavComponent implements OnDestroy {
   showDropdown = false;
   connection_status: WritableSignal<boolean> = signal(false)
   private connectionSub!: Subscription;
+  label: string = "Süd-Chemie"
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -82,7 +84,11 @@ export class SidenavComponent implements OnDestroy {
     private elementRef: ElementRef,
     public reusable: ReusableAPIService,
     private socket: SocketConnectionService
-  ) {}
+  ) {
+    effect(() => {
+      this.label = label()
+    })
+  }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
@@ -133,6 +139,7 @@ export class SidenavComponent implements OnDestroy {
           JSON.stringify(data.data.organization[0])
         );
         this.organization_name = data.data.organization[0].name;
+        label.set(data.data.organization[0].organizationLabel)
       },
     });
   }

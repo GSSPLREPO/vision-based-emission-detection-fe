@@ -1,6 +1,10 @@
 import { signal } from "@angular/core";
 import { environment } from "../environments/environment.development"
 
+export const version = signal("")
+
+export const label = signal("")
+
 export const global_const = {
     pyServer: "http://localhost:8001",
     connection: signal<boolean>(false),

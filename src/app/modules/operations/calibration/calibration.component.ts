@@ -21,7 +21,10 @@ export class CalibrationComponent{
   @ViewChild('overlayCanvas', { static: true }) overlayCanvas!: ElementRef<HTMLCanvasElement>;
   @ViewChild('videoElement', { static: true }) videoElement!: ElementRef<HTMLImageElement>;
 
-  constructor(private socketService: SocketConnectionService) {
+  constructor(
+    private socketService: SocketConnectionService,
+    private router: Router
+  ) {
     // this.socketService.chimneys$.subscribe(chimneys => {
     //   this.chimneys = chimneys;
     //   this.selected = {};
@@ -126,6 +129,7 @@ export class CalibrationComponent{
       }));
 
     this.socketService.sendDetectedChimneys(selectedChimneys);
+    this.router.navigate(['/operation/calibration-step2'])
     alert('Selected chimneys sent to backend');
   }
 }

@@ -79,8 +79,11 @@ export class ApiService {
   delete(endpoint: string, queryParams?: any): Observable<any> {
     return this.http.delete(this.finalURL(endpoint), { params: queryParams });
   }
+  
+  getVersion(): Observable<any> {
+    return this.http.get(this.finalURL("/api/Organization/GetSoftwareVersion"))
+  }
  
-  // ✅ Add this:
   logout(): void {
     localStorage.removeItem(global_const.token); // same key used in authGuard
     this.router.navigate(['/login']);

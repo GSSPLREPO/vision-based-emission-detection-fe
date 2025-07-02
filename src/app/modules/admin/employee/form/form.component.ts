@@ -259,7 +259,7 @@ export class FormComponent implements OnInit {
             // this.reusable.userName.set(data.data.name)
             // localStorage.setItem('username', data.data.name);
             this.toast.success(data.message);
-            this.route.navigateByUrl('/admin/employee');
+            this.route.navigateByUrl('/admin/employees');
           },
           error: (err: any) => {
             this.toast.error(err.error.message);
@@ -273,7 +273,7 @@ export class FormComponent implements OnInit {
         .subscribe({
           next: (data: any) => {
             this.toast.success(data.message);
-            this.route.navigateByUrl('/admin/employee');
+            this.route.navigateByUrl('/admin/employees');
           },
           error: (err: any) => {
             this.toast.error(err.error.message);

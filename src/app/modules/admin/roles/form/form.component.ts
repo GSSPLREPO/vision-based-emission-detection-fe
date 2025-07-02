@@ -89,7 +89,7 @@ export class FormComponent {
       this.apiService.put(`/api/Role/UpdateRole`, this.roleForm.value).subscribe({
         next: (data: any) => {
           this.toast.success(data.message)
-          this.route.navigateByUrl('/admin/role')
+          this.route.navigateByUrl('/admin/roles')
         },error: (err:any) => {
           this.toast.error(err.error.message)
         }
@@ -97,10 +97,10 @@ export class FormComponent {
     }
      //For Add  if Id not found
     else {
-      this.apiService.post(`/api/Role/InsertRole`, this.roleForm.value).subscribe({
+      this.apiService.post(`/api/Role/AddRole`, this.roleForm.value).subscribe({
         next: (data: any) => {
           this.toast.success(data.message)
-          this.route.navigateByUrl('/admin/role')
+          this.route.navigateByUrl('/admin/roles')
         },
         error: (err: any) => {
           this.toast.error(err.error.message)

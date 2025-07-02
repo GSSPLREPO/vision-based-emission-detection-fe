@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, effect, ElementRef, Input, ViewChild } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ReusableAPIService } from '../../../services/reusable-api.service';
 import { Modal } from 'bootstrap';
-import { global_const } from '../../../config/global-constants';
+import { global_const, version } from '../../../config/global-constants';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
     selector: 'app-body',
@@ -21,11 +22,13 @@ export class BodyComponent {
   @Input() collapsed:any;
   @Input() screenWidth:any;
   currentYear: number = new Date().getFullYear(); //Rahul: added 'currentYear' 20-01-2025 
+  version: string = ""
   
   constructor(
     private router: Router, 
     private route: ActivatedRoute,     
     private titleService: Title,
+    private apiService: ApiService,
     private reusableService: ReusableAPIService) {
     router.events.subscribe((url: any) => {
 
@@ -75,8 +78,12 @@ export class BodyComponent {
         this.routeArray = r.filter((data: any) => data !== "");
       }
     });
+    
+    effect(() => {
+      this.version = version()
+    })
 
-
+    this.version = localStorage.getItem("version") || ""
   }
 
   ngOnInit(){

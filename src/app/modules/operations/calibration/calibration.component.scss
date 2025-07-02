@@ -24,3 +24,32 @@
   gap: 12px;
   align-items: center;
 }
+
+button {
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #303f9f;
+  transform: scale(1.03);
+}
+
+button:disabled {
+  background-color: #9fa8da;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button:active {
+  transform: scale(0.97);
+}

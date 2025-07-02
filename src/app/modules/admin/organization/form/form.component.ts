@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { global_const } from '../../../../../config/global-constants';
+import { global_const, label, version } from '../../../../../config/global-constants';
 import { ToastrService } from 'ngx-toastr';
 import { AlphabetOnlyDirective } from '../../../../shared/directives/alphabet-only.directive';
 import { AutofocusDirective } from '../../../../shared/directives/autofocus.directive';
@@ -77,6 +77,21 @@ export class FormComponent implements OnInit {
         null,
         [Validators.required, Validators.pattern(global_const.emailRegex)],
       ],
+      panno: [
+        null,
+        [Validators.pattern(global_const.panRegex)]
+      ],
+      gstno: [
+        null,
+        [Validators.pattern(global_const.gstRegex)]
+      ],
+      softwareVersion: [
+        null
+      ],
+      organizationLabel: [
+        null
+      ],
+
     });
   }
 
@@ -219,6 +234,9 @@ export class FormComponent implements OnInit {
         .subscribe({
           next: (data: any) => {
             localStorage.setItem('organization', JSON.stringify(data.data))
+            localStorage.setItem('version', data.data.softwareVersion)
+            version.set(localStorage.getItem("version") || "")
+            label.set(data.data.organizationLabel)
             this.reusable.organizationName.set(data.data.name)
             console.log(data.data.name)
             // if (this.logo) {
@@ -226,7 +244,7 @@ export class FormComponent implements OnInit {
             // }
 
             this.toast.success(data.message);
-            this.route.navigateByUrl('/admin/organization');
+            this.route.navigateByUrl('/admin/organizations');
           },
         });
     }

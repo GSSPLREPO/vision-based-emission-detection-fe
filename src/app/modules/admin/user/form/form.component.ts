@@ -238,7 +238,7 @@ export class FormComponent implements OnInit {
       this.apiService.put(`/api/Users/UpdateUser`, formData).subscribe({
         next: (data: any) => {
           this.toast.success(data.message)
-          this.route.navigateByUrl('/admin/user')
+          this.route.navigateByUrl('/admin/users')
         },
         error: (err: any) => {
           this.toast.error(err.error.message)
@@ -250,7 +250,7 @@ export class FormComponent implements OnInit {
       this.apiService.post(`/api/Users/AddUser`, formData).subscribe({
         next: (data: any) => {
           this.toast.success(data.message)
-          this.route.navigateByUrl('/admin/user')
+          this.route.navigateByUrl('/admin/users')
         },
         error: (err: any) => {
           this.toast.error(err.error.message)

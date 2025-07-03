@@ -8,40 +8,22 @@
       }
     </div> -->
 <div class="card mb-3 p-4">
-  <!-- <mat-form-field appearance="outline">
-      <mat-label>Search</mat-label>
-      <input matInput placeholder="Placeholder" (keyup)="doFilter($event)" />
-    </mat-form-field> -->
-
-  <div class="d-flex justify-content-between align-items-center">
-    <div></div>
-        @if(addbutton && isInsert){
-          <div class="float-end mb-3">
-            <button class="btn btn-pur custom-focus-color" [routerLink]='pageURL'>+ {{addbutton}}</button>
-          </div>
-        }
-  </div>
-  <div class="row g-3">
-    <div class="col-auto">
-      <!-- <input
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="input-icon-wrapper">
+      <i class="fa fa-search"></i>
+      <input
         type="email"
-        class="form-control mb-3"
+        class="form-control input-with-icon"
         id="exampleFormControlInput1"
         (keyup)="doFilter($event)"
-          placeholder="🔍 Search"
+        placeholder="Search"
+      />
+    </div>
 
-      /> -->
-  <div class="input-icon-wrapper">
-  <i class="fa fa-search"></i>
-  <input
-    type="email"
-    class="form-control mb-3 input-with-icon"
-    id="exampleFormControlInput1"
-    (keyup)="doFilter($event)"
-    placeholder="Search"
-  />
-</div>
-
+    <div *ngIf="addbutton && isInsert">
+      <button class="btn btn-pur custom-focus-color" [routerLink]="pageURL">
+        + {{ addbutton }}
+      </button>
     </div>
   </div>
 

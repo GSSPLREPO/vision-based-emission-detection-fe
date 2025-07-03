@@ -164,7 +164,7 @@ export class CalibrationStep2Component implements OnInit {
       y1: Math.round(box.y1),
       x2: Math.round(box.x2),
       y2: Math.round(box.y2),
-      label: box.label.trim()
+      name: box.label.trim()
     }));
     console.log('Sending labeled drawn boxes:', labeledBoxes);
     this.socket_con.sendMessage({ event: "step2", chimneys: labeledBoxes })

@@ -22,11 +22,11 @@ export const routes: Routes = [
         path: '',
         component: MainLayoutComponent,
         children: [
-            // {
-            //     path: 'dashboard',
-            //     component: DashboardComponent,
-            //     // canActivate: [authGuard,noQueryGuard,permissionGuard ]
-            // },
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+                // canActivate: [authGuard,noQueryGuard,permissionGuard ]
+            },
             {
                 path: 'about',
                 component: AboutUsComponent,
@@ -40,6 +40,10 @@ export const routes: Routes = [
             {
               path: 'operation',
               loadChildren: () => import('./modules/operations/operations.module').then((m) => m.OperationsModule)
+            },
+            {
+                path: 'reports',
+                loadChildren: () => import('./modules/reports/reports.module').then((m) => m.ReportsModule)
             }
         ]
     },

@@ -1,5 +1,84 @@
+<form [formGroup]="dateForm">
+    <div class="card mb-3 p-3">
+      <div class="row">
+          <!-- Date Input -->
+          <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <div class="form-group mb-3">
+              <label for="from" class="form-label">From Date & Time<span class="text-danger">*</span></label>
+              <input type="datetime-local" step="1" min="1900-01-01T00:00" max="2099-12-31T23:59" formControlName="from" class="form-control custom-focus-color" (ngModelChange)="getDateValidation()"/>
+              @if(f.from.errors?.required){
+                <div class="text-danger">From Date & Time is required</div>
+              }
+              <div *ngIf="this.fromDateCheck" class="text-danger mt-1">
+                Invalid From Date
+              </div>
+            </div>
+          </div>
+  
+      
+          <div class=" col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <div class="form-group mb-3">
+              <label for="to" class="form-label">To Date & Time<span class="text-danger">*</span></label>
+              <input type="datetime-local" step="1" min="1900-01-01T00:00" max="2099-12-31T23:59" formControlName="to" class="form-control custom-focus-color" (ngModelChange)="getDateValidation()"/>
+              @if(f.to.errors?.required){
+                <div class="text-danger">To Date & Time is required</div>
+              }
+              <div *ngIf="this.toDateCheck" class="text-danger mt-1">
+                Invalid To Date
+              </div>
+            </div>
+            @if(dateValidation && !fromDateCheck && !toDateCheck){
+              <div class="text-danger">
+                  To Date & Time cannot be earlier than From Date & Time
+              </div>
+              }
+          </div>
+          
+          <div  class=" col-sm-12 col-md-6 col-lg-6 col-xl-4"> 
+            <div class="form-group mb-3">
+                <label for="chimneyId" class="form-label">Chimney ID</label>
+                <input type="text" formControlName="chimneyId" class="form-control custom-focus-color" placeholder="Enter the Chimney ID/Chimney Name">
+            </div>
+          </div>
+  
+      
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <div style="margin-top: 31px;">
+              <div class="row">
+                <div class="col-auto">
+    
+                  <button type="button" class="btn btn-pur custom-focus-color" (click)="onGenerate()">
+                    @if(showLoader){
+                      <i class="fa fa-spinner fa-spin me-2"></i>Loading
+                    }
+                    @else{
+                      <i class="fa fa-random me-2" aria-hidden="true"></i>Generate
+                    }
+                  </button>
+                
+                </div>
+                <!-- @if(reportData?.length > 0 && !showLoader){
+                  <div class="col-auto">
+                    <button class="btn btn-excel ms-1" style="width: 40px;" (click)="generateExcel(reportData)">
+                       <i class="fa-solid fa-file-excel "></i>
+                    </button>
+                  </div>
 
-<div class="card mb-3 p-4" [hidden]="!reportData">
+                  <div class="col-auto">
+                    <button class="btn btn-pdf" style="width: 40px;" (click)="generatePDF()" >
+                       <i class="fa fa-file-pdf-o" ></i>
+                    </button>
+                  </div>
+                } -->
+              </div>
+          </div>
+          </div>
+        </div>
+    </div>
+  </form>
+  
+
+  <div class="card mb-3 p-4" [hidden]="!reportData">
        <div class="row g-3">
         <div class="col-auto">
           <input
@@ -54,24 +133,20 @@
               <td mat-cell *matCellDef="let element">
                   @if (element.isEmission)
                   {
-                    <!-- <div class="d-flex align-items-center" style="padding: 5px; text-align: center; border-radius: 5px; background-color: #dc3545; color: #fff;">
-                      <i class="fa fa-cloud-showers-heavy me-2"></i>
-                      <strong>Emission Ongoing</strong>
-                    </div> -->
-                    <div class="d-flex align-items-center justify-content-center rounded pt-2 pb-2"
+                    <div class="d-flex align-items-center justify-content-center rounded p-2"
                          style="background-color: rgba(220, 53, 69, 0.15); color: #b02a37;">
                       <i class="fa fa-smog me-2" style="font-size: 1rem;"></i>
                       Emission Ongoing
                     </div>
                   }
                   @else {
-                    <div class="d-flex align-items-center justify-content-center rounded pt-2 pb-2"
+                    <div class="d-flex align-items-center justify-content-center rounded p-2"
                          style="background-color: rgba(40, 167, 69, 0.15); color: #1e7e34;">
                       <i class="fa fa-check-circle me-2" style="font-size: 1rem;"></i>
                       Emission Stopped
                     </div>
                   }
-                
+
               </td>
             </ng-container>
 

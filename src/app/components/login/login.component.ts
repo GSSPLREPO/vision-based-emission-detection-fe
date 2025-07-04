@@ -30,6 +30,7 @@ export class LoginComponent {
   submitted = false;
   year = new Date().getFullYear();
   version: string = ""
+  label: string = ""
 
   public FnYears: any = [];
   constructor(
@@ -45,7 +46,9 @@ export class LoginComponent {
     apiService.getVersion()
     .subscribe(
       (data: any) => {
-        this.version = data.data
+        this.version = data.data.softwareVersion
+        this.label = data.data.organizationLabel
+
         localStorage.setItem('version', this.version)
         version.set(this.version)
       }
@@ -102,7 +105,7 @@ export class LoginComponent {
           }
           finally
           {
-            this._router.navigate(["/about"])
+            this._router.navigate(["/dashboard"])
           }
         },
         error: (err: any) => {

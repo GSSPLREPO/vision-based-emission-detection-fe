@@ -5,10 +5,20 @@
     <div style="font-size: 32px; text-align: center; padding-left: 2.5em;">Süd-Chemie
     </div>
   </div> -->
-  <div class="d-flex" style="text-align: center;">
+  <!-- <div class="d-flex">
   <img src="/assets/logo.jpeg" alt="Logo" width="60px" />
-  <div style="font-size: 32px; margin-left: 20px;">Süd-Chemie</div>
+  <div class="d-flex justify-content-around" style="font-size: 32px;">Süd-Chemie</div>
+</div> -->
+<div class="position-relative" style="height: 60px;">
+  <!-- Left-aligned Logo -->
+  <img src="/assets/logo.jpeg" alt="Logo" width="60px" class="position-absolute start-0 top-50 translate-middle-y" />
+
+  <!-- Centered Text -->
+  <div class="position-absolute top-50 start-50 translate-middle" style="font-size: 32px;">
+    Süd-Chemie
+  </div>
 </div>
+
   <div class="image-container">
     <!-- <div>
       <img src="/assets/logo.jpeg" alt="Logo" width="60px" />
@@ -95,10 +105,10 @@
                 <div class="">
                     <span>&copy; {{year}} Süd-Chemie</span>
                 </div>
-                <div style="vertical-align: middle;">{{version}}</div>
+                <div style="vertical-align: middle;">Version: {{version}}</div>
  
                 <div class="d-flex">
-                    <div style="vertical-align: middle;">Powered By</div>
+                    <div style="vertical-align: middle;">Powered by</div>
                     <a href="https://garimasystem.com/" target="_blank" rel="noopener noreferrer" style="font-size: 14px; text-decoration: none; color: black;">                        
                         <img src="/assets/GSSPL-Logo.png" alt="GSSPL Logo" title="Garima System Solutions" style="width: 20px; height: auto; vertical-align: middle;">
                     </a>

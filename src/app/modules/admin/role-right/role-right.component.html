@@ -2,7 +2,7 @@
   <div class="card p-3 m-3">
     <div style="width: 300px;">
       <div class="form-group mb-3">
-        <label for="userType" class="form-label">Select Role: </label>
+        <label for="userType" class="form-label">Role</label>
         <ng-select [items]="roles" bindLabel="name" bindValue="id" placeholder="--Select Role--" class="custom-placeholder" formControlName="roleId" (ngModelChange)="getValue($event)" autofocus>
         </ng-select>
       </div>

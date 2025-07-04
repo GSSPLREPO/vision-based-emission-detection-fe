@@ -30,6 +30,13 @@ export class BodyComponent {
     private titleService: Title,
     private apiService: ApiService,
     private reusableService: ReusableAPIService) {
+      
+      apiService.getVersion()
+      .subscribe(
+        (data: any) => {
+          this.version = data.data.softwareVersion
+        }
+      )
     router.events.subscribe((url: any) => {
 
       // Before adding edit screen in sales/scrap 
@@ -82,8 +89,6 @@ export class BodyComponent {
     effect(() => {
       this.version = version()
     })
-
-    this.version = localStorage.getItem("version") || ""
   }
 
   ngOnInit(){
